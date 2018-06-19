@@ -1,37 +1,26 @@
 import 'package:flutter/material.dart';
-void main(){
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Hello world',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Hello world'),
-        ),
-        body: HelloRectangle(),
-      ),
-    ),
+import 'login_page.dart';
+import 'home_page.dart';
 
-  );
-}
+void main() => runApp(new MyApp());
 
-class HelloRectangle extends StatelessWidget{
+class MyApp extends StatelessWidget {
+  final routes = <String, WidgetBuilder>{
+    LoginPage.tag: (context) => LoginPage(),
+    HomePage.tag: (context) => HomePage(),
+  };
+
   @override
   Widget build(BuildContext context) {
-
-    return Center(
-      child: Container(
-        color: Colors.greenAccent,
-        height: 400.0,
-        width: 300.0,
-        child: Center(
-          child: Text(
-            'Hello Everyone',
-            style: TextStyle(fontSize: 40.0),
-            textAlign: TextAlign.center,
-          ),
-        ),
+    return new MaterialApp(
+      title: 'Login',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.lightBlue,
+        fontFamily: 'Nunito',
       ),
+      home: LoginPage(),
+      routes: routes,
     );
   }
 }
